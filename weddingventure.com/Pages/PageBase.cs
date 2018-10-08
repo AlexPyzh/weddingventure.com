@@ -1,19 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using System;
+using weddingventure.com.Data;
 
 namespace weddingventure.com
 {
-    public abstract class PageBase
+    public class PageBase
     {
+        protected IWebDriver Driver { get; }
+        protected DataSource Data;
+        
         public PageBase(IWebDriver driver)
         {
             Driver = driver;
+            Data = new DataSource();
         }
 
-        protected IWebDriver Driver { get; }
+        public void ClearAllInputsOnThePage()
+        {
+            var inputs = Driver.FindElements(By.TagName("input"));
+
+            foreach (var input in inputs)
+            {
+                try
+                {
+                    input.Clear();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
     }
 }

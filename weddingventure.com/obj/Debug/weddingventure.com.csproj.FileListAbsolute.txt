@@ -17,3 +17,6 @@ C:\Dev\Selenium\weddingventure.com\weddingventure.com\obj\Debug\weddingventure.c
 C:\Dev\Selenium\weddingventure.com\weddingventure.com\obj\Debug\weddingventure.com.csproj.CopyComplete
 C:\Dev\Selenium\weddingventure.com\weddingventure.com\obj\Debug\weddingventure.com.dll
 C:\Dev\Selenium\weddingventure.com\weddingventure.com\obj\Debug\weddingventure.com.pdb
+C:\Dev\Selenium\weddingventure.com\weddingventure.com\bin\Debug\chromedriver.exe
+C:\Dev\Selenium\weddingventure.com\weddingventure.com\bin\Debug\WebDriver.Support.dll
+C:\Dev\Selenium\weddingventure.com\weddingventure.com\bin\Debug\WebDriver.Support.xml

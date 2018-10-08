@@ -1,8 +1,13 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using NUnit.Framework;
 using weddingventure.com.Pages;
 
 namespace weddingventure.com.Tests
 {
+    [TestFixture]
     class TestFixture : TestBase
     {
         [Test]
@@ -50,19 +55,47 @@ namespace weddingventure.com.Tests
         {
             RegisterPage = new RegisterPage(driver);
             RegisterPage.GoToPage();
-
-            RegisterPage.FillTheFirstNameField();
-            RegisterPage.FillTheEmailField();
-            RegisterPage.FillThePasswordField();
-            RegisterPage.FillTheConfirmPasswordField();
+            RegisterPage.ClearAllInputsOnThePage();
+            
+            RegisterPage.FirstNameField.SendKeys(Data.firstName);
+            RegisterPage.EmailField.SendKeys(Data.email);
+            RegisterPage.PasswordField.SendKeys(Data.password);
+            RegisterPage.ConfirmPasswordField.SendKeys(Data.password);
             RegisterPage.AcceptTermCheckBox.Click();
             CreateBusinessProfilePage =  RegisterPage.CreateAccountButtonClick();
-            Assert.True(CreateBusinessProfilePage.PageTitle.Text.Contains("Create a public business profile"));
-
-            CreateBusinessProfilePage.BusinessNameField.GetCssValue()
             
+            //   Assert.True(CreateBusinessProfilePage.PageTitle.Text.Contains("Create a public business profile"));
+
+            CreateBusinessProfilePage.ClearAllInputsOnThePage();
+            CreateBusinessProfilePage.BusinessNameField.SendKeys(Data.firstName);
+            CreateBusinessProfilePage.CityField.SendKeys(Data.City);
+            CreateBusinessProfilePage.StateListBox.SelectByText("Alabama");
+            CreateBusinessProfilePage.ZipCodeField.SendKeys(Data.ZipCode);
+            CreateBusinessProfilePage.WeddingCategoryListBox.SelectByText("Photographer");
+            CreateBusinessProfilePage.PublicEmailAddressField.SendKeys(Data.email_3);
+            CreateBusinessProfilePage.PhoneField.SendKeys(Data.Phone);
+            CreateBusinessProfilePage.CreateAccount.Click();
         }
 
+        [Test]
+        public void SignInAsVendor()
+        {
+            PageWithRegisterLink = new PageWithRegisterLink(driver);
+            PageWithRegisterLink.GoToPage();
+
+            SignInPage = PageWithRegisterLink.LoginLinkClick();
+            SignInPage.EmailField.SendKeys(Data.email);
+            SignInPage.PasswordField.SendKeys(Data.password);
+            SignInPage.EnterButton.Click();
+        }
+
+        [Test]
+        public void Test()
+        {
+
+        }
+
+       
 
     }
 }

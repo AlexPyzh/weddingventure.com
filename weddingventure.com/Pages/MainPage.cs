@@ -20,8 +20,9 @@ namespace weddingventure.com
 
         private const string _pageUrl = "http://weddingventure.com/";
         public IWebElement freeVendorAccountLink => Driver.FindElement(By.XPath("/html/body/header/div[1]/div/ul/li[2]/a"));
+        public IWebElement LoginLink => Driver.FindElement(By.LinkText("Login"));
         
-        public override void GoToPage()
+        public void GoToPage()
         {
             Driver.Navigate().GoToUrl(_pageUrl);
         }

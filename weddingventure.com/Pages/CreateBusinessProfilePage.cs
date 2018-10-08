@@ -15,25 +15,9 @@ namespace weddingventure.com.Pages
         public IWebElement ZipCodeField => Driver.FindElement(By.Id("vendor_sZipcode"));
         public SelectElement WeddingCategoryListBox => new SelectElement(Driver.FindElement(By.Id("vendor_iPrimaryCategoryUID")));
         public IWebElement WebSiteField => Driver.FindElement(By.Id("vendor_sUrl"));
-        public IWebElement PublicAddressField => Driver.FindElement(By.Id("vendor_sPublicEmail"));
+        public IWebElement PublicEmailAddressField => Driver.FindElement(By.Id("vendor_sPublicEmail"));
         public IWebElement PhoneField => Driver.FindElement(By.Id("vendor_sPhone"));
         public IWebElement CreateAccount => Driver.FindElement(By.Id("accountSubmit"));
-
-        public readonly string City = "New York";
-        public readonly string ZipCode = "111000";
-        public readonly string Phone = "+79261112233";
-
-        public void FillBusinessNameField()
-        {
-            BusinessNameField.Clear();
-        }
-
-        public void ClearAllInputsOnThePage()
-        {
-            Driver.FindElements(By.)
-        }
-
-
 
     }
 }

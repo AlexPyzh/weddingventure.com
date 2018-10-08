@@ -12,15 +12,26 @@ namespace weddingventure.com
     {
         public PageWithRegisterLink(IWebDriver driver) : base(driver){}
 
-        protected const string pageUrl = "https://vendors.weddingventure.com/";
+        private const string pageUrl = "https://vendors.weddingventure.com/";
 
-        public IWebElement registerLink => Driver.FindElement(By.XPath("/html/body/header/div[1]/div/div/div/ul/li[1]/a"));
+        public IWebElement RegisterLink => Driver.FindElement(By.XPath("/html/body/header/div[1]/div/div/div/ul/li[1]/a"));
+        public IWebElement LoginLink => Driver.FindElement(By.LinkText("Login"));
+
+        public void GoToPage()
+        {
+            Driver.Navigate().GoToUrl(pageUrl);
+        }
 
         public RegisterPage GoToRegisterPage()
         {
-            registerLink.Click();
-
+            RegisterLink.Click();
             return new RegisterPage(Driver);
+        }
+
+        public SignInPage LoginLinkClick()
+        {
+            LoginLink.Click();
+            return new SignInPage(Driver);
         }
 
     }
